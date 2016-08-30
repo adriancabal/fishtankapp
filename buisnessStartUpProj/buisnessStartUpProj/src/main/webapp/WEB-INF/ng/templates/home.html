@@ -1,0 +1,146 @@
+<!-- <h1 align="center" style="color: black; ">Welcome Back {{hc.user.username}}</h1> -->
+
+
+<!-- OUR NAV BAR IN PROGRESS COPY IT OVER TO ALL STATES AND ADD ON IF NECESSARY -->
+<nav class="navbar navbar-inverse">
+	<div class="container-fluid">
+		<ul class="nav navbar-nav">
+			<li class="nav-item"><a class="nav-link">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			
+			</a></li>
+		</ul>
+		<div class="navbar-header">	
+	      <a class="navbar-brand" href="#" ui-sref="homeState" id="navlogo"><span id="fish">Fish</span><span id="tank">Tank
+	      </span>
+	      </a>
+	    </div>
+	    <img src="http://freshfish.co.nz/wp/wp-content/uploads/2014/11/favicon.gif" height="35px" width="40px" style="float:left;margin-top: 8px;"/>
+		<ul class="nav navbar-nav">
+			<li class="nav-item"><a class="nav-link">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+			<li class="nav-item"><a class="navbar-brand" ui-sref="viewState" id="mynav">My Info &nbsp;&nbsp;</a></li>
+			<li class="nav-item active"><a class="navbar-brand" ui-sref="projectState" id="mynav">My Projects &nbsp;&nbsp;</a></li>
+			<li class="nav-item"><a class="navbar-brand" ui-sref="investState" id="mynav">My Investments &nbsp;&nbsp;</a></li>
+			<!-- <li class="nav-item"><a class="nav-link" ui-sref="searchState">Search Projects</a></li> -->
+			<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+			<li class="dropdown">
+				<a class="dropdown-toggle navbar-brand" data-toggle="dropdown" href="#" id="mynav">Search Projects
+		        <span class="caret"></span></a>
+		        <ul class="dropdown-menu">
+		          <li><a href="#"  id="dropbar" ng-click="hc.searchType(1)">Technology</a></li>
+		          <li><a href="#"  id="dropbar" ng-click="hc.searchType(2)">Entertainment</a></li>
+		          <li><a href="#"  id="dropbar" ng-click="hc.searchType(3)">Business</a></li> 
+		          <li><a href="#"  id="dropbar" ng-click="hc.searchType(4)">Food</a></li> 
+		          <li><a href="#"  id="dropbar" ng-click="hc.searchType('currentAmount')">Current Investment</a></li> 
+		          <li><a href="#"  id="dropbar" ng-click="hc.searchType('ratio')">Stock Cost</a></li>
+		          <li><a href="#"  id="dropbar" ng-click="hc.searchType('rating')">Rating</a></li>
+		        </ul>
+	        </li>
+	        
+			<li class="nav-item"><a class="nav-link navbar-brand" ui-sref="createProjectState" id="mynav_startproj">
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			Start a Project</a></li>
+
+		</ul>
+		<ul class="nav navbar-nav navbar-right navbar-header">
+	      <li><a href="#" id="username" class="navbar-brand">{{hc.user.username}}&nbsp;&nbsp;<span class="glyphicon glyphicon-user" id="userglyph"></span>&nbsp;&nbsp;</a> </li>
+	    	<li>&nbsp;&nbsp;</li>
+	    	<li id="mynav"><a href="#" id="logout" class="navbar-brand">Logout</a></li>
+	    	<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+	    </ul>
+	</div>
+</nav>
+
+
+<div class="container">
+
+<br>
+<div align="center">
+<div class="well well-lg" style="display:inline-block; width:65%;background-color:#0e1144">
+<h3 style="color:aqua"><span class="glyphicon glyphicon-home"></span> HOME</h3>
+<h2 id="pageHeader" >Recent Activities</h2>
+<br>
+<div class="well" ng-show="hc.updates[0][0]" style="background-color:#99e6ff;">
+
+	<h3><b>Updates</b></h3>
+	<div ng-repeat="item in hc.updates" class="well row" style="background-color: #e6faff">
+		
+		<table class="table table-hover">
+			<thead>
+				<tr style="font-weight:bold;text-align:center;">
+					<td>Project:</td>					
+					<td>Title</td>
+					<td>Date</td>
+				</tr>
+			</thead>
+			<tbody>
+				<tr style="text-align:center;">
+					<td>{{item[0].project.title}}</td>					
+					<td>{{item[0].title}}</td>
+					<td>{{item[0].date | date:mediumDate}}</td>
+				</tr>
+			</tbody>
+		</table>
+		<!-- <p class="col-sm-3"><b>Project: {{item[0].project.title}}</b></p>
+		<p class="col-sm-3">Title: {{item[0].title}}</p>
+		<p class="col-sm-3">Date: {{item[0].date | date:mediumDate}}</p> -->
+	</div>
+</div>
+<div class="well" ng-show="hc.investmentsForMyProjects[0]" style="background-color:#99e6ff;">
+	<h3><b>Investments</b></h3>
+	<div ng-repeat="item in hc.investmentsForMyProjects" class="well row" style="background-color: #e6faff">
+	
+		<table class="table table-hover">
+			<thead>
+				<tr style="font-weight:bold;text-align:center;">
+					<td>Project:</td>					
+					<td>Percent</td>
+					<td>Amount</td>
+					<td>Date</td>
+				</tr>
+			</thead>
+			<tbody>
+				<tr style="text-align:center;">
+					<td>{{item[0].project.title}}</td>					
+					<td>{{item[0].percent}}%</td>
+					<td>{{item[0].amount | currency}}</td>
+					<td>{{item[0].date | date:mediumDate}}</td>
+				</tr>
+			</tbody>
+		</table>
+		<!-- <p class="col-sm-3"><b>Project: {{item[0].project.title}}</b></p>
+		<p class="col-sm-3">Percent: {{item[0].percent}}%</p>
+		<p class="col-sm-3">Amount: {{item[0].amount | currency}}</p>
+		<p class="col-sm-3">Date: {{item[0].date | date:mediumDate}}</p> -->
+	</div>
+</div>
+<div class="well" ng-show="hc.reviewsByProject[0]" style="background-color:#99e6ff;">
+	<h3><b>Reviews</b></h3>
+	<div ng-repeat="item in hc.reviewsByProject" class="well row" style="background-color: #e6faff">
+		
+		<table class="table table-hover">
+			<thead>
+				<tr style="font-weight:bold;text-align:center;">
+					<td>Project:</td>					
+					<td>Stars</td>
+					<td>Date</td>
+				</tr>
+			</thead>
+			<tbody>
+				<tr style="text-align:center;">
+					<td>{{item[0].project.title}}</td>					
+					<td>{{item[0].stars}}</td>
+					<td>{{item[0].date | date:mediumDate}}</td>
+				</tr>
+			</tbody>
+		</table>
+		<!-- 
+		<p class="col-sm-3"><b>Project: {{item[0].project.title}}</b></p>
+		<p class="col-sm-3">Stars: {{item[0].stars}}</p>
+		<p class="col-sm-3">Date: {{item[0].date | date:mediumDate}}</p> -->
+	</div>
+
+</div>
+
+</div>
+</div>
+</div>

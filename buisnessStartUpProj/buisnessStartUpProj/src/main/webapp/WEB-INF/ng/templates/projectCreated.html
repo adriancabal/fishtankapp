@@ -1,0 +1,64 @@
+<nav class="navbar navbar-inverse">
+	<div class="container-fluid">
+		<ul class="nav navbar-nav">
+			<li class="nav-item"><a class="nav-link">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			
+			</a></li>
+		</ul>
+		<div class="navbar-header">	
+	      <a class="navbar-brand" href="#" ui-sref="homeState" id="navlogo"><span id="fish">Fish</span><span id="tank">Tank
+	      </span>
+	      </a>
+	    </div>
+	    <img src="http://freshfish.co.nz/wp/wp-content/uploads/2014/11/favicon.gif" height="35px" width="40px" style="float:left;margin-top: 8px;"/>
+		<ul class="nav navbar-nav">
+			<li class="nav-item"><a class="nav-link">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+			<li class="nav-item"><a class="navbar-brand" ui-sref="viewState" id="mynav">My Info &nbsp;&nbsp;</a></li>
+			<li class="nav-item active"><a class="navbar-brand" ui-sref="projectState" id="mynav">My Projects &nbsp;&nbsp;</a></li>
+			<li class="nav-item"><a class="navbar-brand" ui-sref="investState" id="mynav">My Investments &nbsp;&nbsp;</a></li>
+			<!-- <li class="nav-item"><a class="nav-link" ui-sref="searchState">Search Projects</a></li> -->
+			<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+			<li class="dropdown">
+				<a class="dropdown-toggle navbar-brand" data-toggle="dropdown" href="#" id="mynav">Search Projects
+		        <span class="caret"></span></a>
+		        <ul class="dropdown-menu">
+		          <li><a href="#"  id="dropbar" ng-click="pcc.searchType(1)">Technology</a></li>
+		          <li><a href="#"  id="dropbar" ng-click="pcc.searchType(2)">Entertainment</a></li>
+		          <li><a href="#"  id="dropbar" ng-click="pcc.searchType(3)">Business</a></li> 
+		          <li><a href="#"  id="dropbar" ng-click="pcc.searchType(4)">Food</a></li> 
+		          <li><a href="#"  id="dropbar" ng-click="pcc.searchType('currentAmount')">Current Investment</a></li> 
+		          <li><a href="#"  id="dropbar" ng-click="pcc.searchType('ratio')">Stock Cost</a></li>
+		          <li><a href="#"  id="dropbar" ng-click="pcc.searchType('rating')">Rating</a></li>
+		        </ul>
+	        </li>
+	        
+			<li class="nav-item"><a class="nav-link navbar-brand" ui-sref="createProjectState" id="mynav_startproj">
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			Start a Project</a></li>
+
+		</ul>
+		<ul class="nav navbar-nav navbar-right navbar-header">
+	      <li><a href="#" id="username" class="navbar-brand">{{pcc.user.username}}&nbsp;&nbsp;<span class="glyphicon glyphicon-user" id="userglyph"></span>&nbsp;&nbsp;</a> </li>
+	    	<li>&nbsp;&nbsp;</li>
+	    	<li id="mynav"><a href="#" id="logout" class="navbar-brand">Logout</a></li>
+	    	<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+	    </ul>
+	</div>
+</nav>
+
+
+<div class="container">
+	<div style="width: 100%" align="center">
+	<div class="well well-lg" style="display:inline-block;background-color:#0e1144;">
+	<h1 id="pageHeader">You started a Project!</h1>
+	<div align="center" style="display:inline-block">
+	
+	<h2 style="color:#80ff80;">{{pcc.project.title}}</h2>
+	<br>
+	<button type="button" class="btn btn-info btn-lg" style="color:white;background-color:#0066ff" ui-sref="indProjectState" ng-click="pcc.saveProj(pcc.project.title)">View Your New Project</button>
+	
+	</div>
+	</div>
+	</div>
+</div>
+

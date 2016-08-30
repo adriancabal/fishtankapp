@@ -1,0 +1,282 @@
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<nav class="navbar navbar-inverse">
+	<div class="container-fluid">
+		<ul class="nav navbar-nav">
+			<li class="nav-item"><a class="nav-link">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			
+			</a></li>
+		</ul>
+		<div class="navbar-header">	
+	      <a class="navbar-brand" href="#" ui-sref="homeState" id="navlogo"><span id="fish">Fish</span><span id="tank">Tank</span></a>
+	    </div>
+	    
+	    <img src="http://freshfish.co.nz/wp/wp-content/uploads/2014/11/favicon.gif" height="35px" width="40px" style="float:left;margin-top: 8px;"/>
+	    
+		<ul class="nav navbar-nav">
+			<li class="nav-item"><a class="nav-link">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+			<li class="nav-item"><a class="navbar-brand" ui-sref="viewState" id="mynav">My Info &nbsp;&nbsp;</a></li>
+			<li class="nav-item active"><a class="navbar-brand" ui-sref="projectState" id="mynav">My Projects &nbsp;&nbsp;</a></li>
+			<li class="nav-item"><a class="navbar-brand" ui-sref="investState" id="mynav">My Investments &nbsp;&nbsp;</a></li>
+			<!-- <li class="nav-item"><a class="nav-link" ui-sref="searchState">Search Projects</a></li> -->
+			<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+			<li class="dropdown">
+				<a class="dropdown-toggle navbar-brand" data-toggle="dropdown" href="#" id="mynav">Search Projects
+		        <span class="caret"></span></a>
+		        <ul class="dropdown-menu">
+		          <li><a href="#"  id="dropbar" ng-click="ipc.searchType(1)">Technology</a></li>
+		          <li><a href="#"  id="dropbar" ng-click="ipc.searchType(2)">Entertainment</a></li>
+		          <li><a href="#"  id="dropbar" ng-click="ipc.searchType(3)">Business</a></li> 
+		          <li><a href="#"  id="dropbar" ng-click="ipc.searchType(4)">Food</a></li> 
+		          <li><a href="#"  id="dropbar" ng-click="ipc.searchType('currentAmount')">Current Investment</a></li> 
+		          <li><a href="#"  id="dropbar" ng-click="ipc.searchType('ratio')">Stock Cost</a></li>
+		          <li><a href="#"  id="dropbar" ng-click="ipc.searchType('rating')">Rating</a></li>
+		        </ul>
+	        </li>
+	        
+			<li class="nav-item"><a class="nav-link navbar-brand" ui-sref="createProjectState" id="mynav_startproj">
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			Start a Project</a></li>
+
+		</ul>
+		<ul class="nav navbar-nav navbar-right navbar-header">
+	      <li><a href="#" id="username" class="navbar-brand">{{ipc.user.username}}&nbsp;&nbsp;<span class="glyphicon glyphicon-user" id="userglyph"></span>&nbsp;&nbsp;</a> </li>
+	    	<li>&nbsp;&nbsp;</li>
+	    	<li id="mynav"><a href="#" id="logout" class="navbar-brand">Logout</a></li>
+	    	<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+	    </ul>
+	</div>
+</nav>
+
+<div class="container" ng-show="ipc.imageLink && ipc.descriptions[0]">
+<div align="center">
+<div style="display: inline-block; width: 75%">
+<div class="well" style="vertical-align: middle;background-color: #ccf5ff;border: thick solid #0e1144">
+	
+	<h2 align="center">{{ipc.project.title}}&nbsp;</h2> <h4> by {{ipc.projUser}}</h4><br>
+	<div style="float:left;display:inline-block;height: 100%;width:50%;">
+		<img alt="project image" ng-src="{{ipc.imageLink}}" ng-show="ipc.imageLink" style="border: thick solid #0e1144"/>
+		<!-- <img src="https://s3-us-west-2.amazonaws.com/fishtankbucket/banana.jpg"/> -->
+		
+	</div>
+	<div style="display:inline-block;">
+		<h3>Project Info</h3>
+		
+		<table class="table table-hover" >
+			<tr style="text-align:center;" id="projectTable">
+							<td style="font-weight:bold;text-align:right;">Link:</td>					
+							<td style="text-align:left;">{{ipc.project.link}}</td>
+			</tr>
+			<tr style="text-align:center;" id="projectTable">
+							<td style="font-weight:bold;text-align:right;">Goal:</td>					
+							<td style="text-align:left;">{{ipc.project.goal |currency}}</td>
+			</tr>
+			<tr style="text-align:center;" id="projectTable">
+				<td style="font-weight:bold;text-align:right;">Current Investment:</td>					
+				<td style="text-align:left;">{{ipc.project.currentAmount | currency}}</td>
+			</tr>
+			<tr style="text-align:center;" id="projectTable">
+				<td style="font-weight:bold;text-align:right;">Stock Price:</td>					
+				<td style="text-align:left;">{{ipc.project.ratio | currency}}</td>
+			</tr>
+			<tr style="text-align:center;" id="projectTable">
+				<td style="font-weight:bold;text-align:right;">End date:</td>					
+				<td style="text-align:left;">{{ipc.project.endDate | date:mediumDate}}</td>
+			</tr>
+			<tr style="text-align:center;" ng-show="ipc.project.rating" id="projectTable">
+				<td style="font-weight:bold;text-align:right;">Rating:</td>					
+				<td style="text-align:left;">{{ipc.project.rating | number : 1}}</td>
+			</tr>
+			<tr style="text-align:center;" ng-hide="ipc.project.rating" id="projectTable">
+				<td style="font-weight:bold;text-align:right;">Rating:</td>					
+				<td style="text-align:left;">No Rating</td>
+			</tr>
+		</table>
+		
+	
+		<br>
+		<div class="row" style="display: inline-block; width: 70%;" ng-show="ipc.owner">
+		<div class="col-sm-6">
+		<button type="button" class="btn btn-success btn-lg" ng-click="open(ipc.project)">Invest</button>
+		</div>
+		<div class="col-sm-6">
+		<button type="button" class="btn btn-primary btn-lg" ng-click="open1(ipc.project)">Contact Owner&nbsp;
+		<span class="glyphicon glyphicon-envelope"></span>
+		</button>
+		</div>
+		</div>
+		
+	</div>
+</div>
+</div>
+</div>
+
+<div align="center">
+	<div style="display: inline-block; width: 75%">
+		<nav class="navbar navbar-inverse" style="background-color:#80dfff">
+			
+			<ul class="nav navbar-nav">
+				<li class="nav-item"><a href="#" class="navbar-brand" ng-click="ipc.showDiv = 1" id="campaign">Campaign &nbsp;&nbsp;</a></li>
+				<li class="nav-item"><a href="#" class="navbar-brand" ng-click="ipc.showDiv = 2" id="reviews">Reviews &nbsp;&nbsp;</a></li>
+			</ul>
+			
+		</nav>
+	</div>
+</div>
+
+		<div align="center">
+			<div style="display: inline-block; width: 75%">
+				<!-- <div class="well">
+					<h2 class="container" align="left">{{ipc.project.title}}</h2>
+					<br>
+					<h3>Project Info</h3>
+					<div class="row">
+						<div class="col-sm-3">Link:</div>
+						<div class="col">{{ipc.project.link}}</div>
+					</div>
+					<br>
+					<div class="row">
+						<div class="col-sm-3">Goal:</div>
+						<div class="col">{{ipc.project.goal |currency}}</div>
+					</div>
+					<br>
+					<div class="row">
+						<div class="col-sm-3">Current Investment:</div>
+						<div class="col">{{ipc.project.currentAmount | currency}}</div>
+					</div>
+					<br>
+					<div class="row">
+						<div class="col-sm-3">End date:</div>
+						<div class="col">{{ipc.project.endDate | date:mediumDate}}</div>
+					</div>
+					<br>
+					<div class="row">
+						<div class="col-sm-3">Rating:</div>
+						<div class="col">{{ipc.project.rating | number : 2}}/5</div>
+					</div>
+					<br>
+					<div class="row">
+						<div class="col-sm-3">
+							<button type="button" class="btn btn-primary"
+								ng-click="open(ipc.project)">Invest!</button>
+						</div>
+					</div>
+				</div> -->
+				
+				
+	<!-- Modal for investing -->
+	<script type="text/ng-template" id="myModalContent1.html">
+        <div class="modal-header" align="center" style="background-color:#00b33c">
+            <h3 class="modal-title" style="color:white;font-weight:bold">Make an Investment</h3>
+        </div>
+        <div class="modal-body" align="center" style="background-color:#e6ffe6;">
+			<h4>Amount: $ <input type="text" ng-model="amount"/></h4>
+        </div>
+        <div class="modal-footer" align="center" style="background-color:#e6ffe6;">
+            <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
+            <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+        </div>
+    </script>
+
+	<!-- Modal for contacting -->
+	<script type="text/ng-template" id="myModalContent2.html">
+        <div class="modal-header" align="center" style="background-color:#0066ff">
+            <h3 class="modal-title" style="color:white">Contact Owner</h3>
+        </div>
+        <div class="modal-body"  style="background-color:#ccf5ff">
+			<h4 style="margin-left:100px;">Subject:</h4> <textarea rows="1" cols="40" ng-model="subject" style="margin-left:100px;"></textarea>
+			<br>
+             
+			<h4 style="margin-left:100px;">Message:</h4> 
+			 <h4 align="center"><textarea rows="7" cols="40" ng-model="message"></textarea> </h4>
+        </div>
+        <div class="modal-footer" style="background-color:#ccf5ff">
+            <button class="btn btn-primary" type="button" ng-click="ok()">Send</button>
+            <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+        </div>
+    </script>
+
+				
+				<div class="well" ng-show="ipc.descriptions[0] && (ipc.showDiv == 1)" style="background-color: #ccf5ff;border: thick solid #0e1144">
+					<h3>Description</h3>
+					<br>
+					<div ng-repeat="desc in ipc.descriptions">
+						<div class="row"><h4>{{desc.text}}</h4></div>
+						<br>
+					</div>
+				</div>
+				
+				<div class="well" ng-show="ipc.updates[0]" style="background-color:#1ec1fa;border: thick solid #0e1144">
+					<h3>Updates</h3>
+					<br>
+					<div ng-repeat="update in ipc.updates" class="well"  style="background-color: #ccf5ff;"">
+						<div class="row">{{update.title}}</div>
+						<div class="row">{{update.description}}</div>
+						<div class="row">{{update.date | date:mediumDate}}</div>
+					</div>
+				</div>
+				
+				<div class="well" style="background-color: #99ffce;border: thick solid #0e1144" ng-show="ipc.showDiv == 2" id="review" ng-click="ipc.resetStars()">
+					<h3>Reviews</h3>
+					<br>
+					<div ng-show="ipc.owner">
+					<h4>Create a Review</h4>
+
+						<div >
+							Comment: <br> <!-- <input type="text" ng-model="ipc.newReviewText" /> -->
+							<textarea rows="4" cols="35" ng-model="ipc.newReviewText"></textarea>
+						</div>
+						<br>
+						<div >
+							Rating:&nbsp;&nbsp;&nbsp;&nbsp;
+							<!-- <input type="number" ng-model="ipc.newReviewStars" min="0" max="5" />
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-->
+								<br> 
+								
+								<h3 >
+								<span  id="star1e" class="glyphicon glyphicon-star-empty" ></span><span id="star1" ng-mouseover="ipc.newReviewStars=1" ng-mouseout="ipc.newReviewStars=ipc.lock" class="glyphicon glyphicon-star" style="display:none;"></span><span  id="star2e" class="glyphicon glyphicon-star-empty"></span><span  id="star2" class="glyphicon glyphicon-star" style="display:none" ng-mouseover="ipc.newReviewStars=2" ng-mouseout="ipc.newReviewStars=ipc.lock" ></span></span><span  id="star3e" class="glyphicon glyphicon-star-empty"></span><span  id="star3" class="glyphicon glyphicon-star" style="display:none"  ng-mouseover="ipc.newReviewStars=3" ng-mouseout="ipc.newReviewStars=ipc.lock" ></span></span><span  id="star4e" class="glyphicon glyphicon-star-empty"></span><span  id="star4" class="glyphicon glyphicon-star" style="display:none" ng-mouseover="ipc.newReviewStars=4" ng-mouseout="ipc.newReviewStars=ipc.lock" ></span></span><span  id="star5e" class="glyphicon glyphicon-star-empty"></span><span  id="star5" class="glyphicon glyphicon-star" style="display:none" ng-mouseover="ipc.newReviewStars=5" ng-mouseout="ipc.newReviewStars=ipc.lock" ></span>
+								&nbsp;{{ipc.newReviewStars}}
+								</h3>
+							
+						</div>
+					<br>
+					<div class="row">
+						<button type="button" class="btn btn-primary"
+							ng-click="ipc.submitReview(ipc.newReviewText, ipc.newReviewStars)">Submit</button>
+					</div>
+					</div>
+					<br>
+					<div class="row" ng-hide="ipc.reviews[0]"><h4>No reviews yet</h4></div>
+					<div ng-show="ipc.reviews">
+						<div ng-repeat="review in ipc.reviews" class="well" style="background-color:#e6fff3;border:solid green">
+							<table class="table">
+								<thead>
+									<tr style="font-weight:bold;text-align:center;">
+										<td>Reviewed By</td>
+										<td>Comment</td>
+										<td>Rating</td>
+										<td>Date</td>
+									</tr>
+								</thead>
+								<tbody>
+									<tr style="text-align:center;">
+										<td>{{review.user.username}}</td>
+										<td>{{review.comment}}</td>
+										<td>{{review.stars}}</td>
+										<td>{{review.date | date:mediumDate}}</td>
+									</tr>
+								</tbody>
+							</table>
+							<!-- <div class="row">{{review.user.username}}</div>
+							<div class="row">{{review.comment}}</div>
+							<div class="row">Rating: {{review.stars}}</div>
+							<div class="row">{{review.date | date:mediumDate}}</div> -->
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+</div>

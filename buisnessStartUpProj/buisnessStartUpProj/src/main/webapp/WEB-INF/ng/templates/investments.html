@@ -1,0 +1,100 @@
+
+<nav class="navbar navbar-inverse">
+	<div class="container-fluid">
+		<ul class="nav navbar-nav">
+			<li class="nav-item"><a class="nav-link">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			
+			</a></li>
+		</ul>
+		<div class="navbar-header">	
+	      <a class="navbar-brand" href="#" ui-sref="homeState" id="navlogo"><span id="fish">Fish</span><span id="tank">Tank</span></a>
+	    </div>
+	    
+	    <img src="http://freshfish.co.nz/wp/wp-content/uploads/2014/11/favicon.gif" height="35px" width="40px" style="float:left;margin-top: 8px;"/>
+	    
+		<ul class="nav navbar-nav">
+			<li class="nav-item"><a class="nav-link">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+			<li class="nav-item"><a class="navbar-brand" ui-sref="viewState" id="mynav">My Info &nbsp;&nbsp;</a></li>
+			<li class="nav-item active"><a class="navbar-brand" ui-sref="projectState" id="mynav">My Projects &nbsp;&nbsp;</a></li>
+			<li class="nav-item"><a class="navbar-brand" ui-sref="investState" id="mynav">My Investments &nbsp;&nbsp;</a></li>
+			<!-- <li class="nav-item"><a class="nav-link" ui-sref="searchState">Search Projects</a></li> -->
+			<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+			<li class="dropdown">
+				<a class="dropdown-toggle navbar-brand" data-toggle="dropdown" href="#" id="mynav">Search Projects
+		        <span class="caret"></span></a>
+		        <ul class="dropdown-menu">
+		          <li><a href="#"  id="dropbar" ng-click="ic.searchType(1)">Technology</a></li>
+		          <li><a href="#"  id="dropbar" ng-click="ic.searchType(2)">Entertainment</a></li>
+		          <li><a href="#"  id="dropbar" ng-click="ic.searchType(3)">Business</a></li> 
+		          <li><a href="#"  id="dropbar" ng-click="ic.searchType(4)">Food</a></li> 
+		          <li><a href="#"  id="dropbar" ng-click="ic.searchType('currentAmount')">Current Investment</a></li> 
+		          <li><a href="#"  id="dropbar" ng-click="ic.searchType('ratio')">Stock Cost</a></li>
+		          <li><a href="#"  id="dropbar" ng-click="ic.searchType('rating')">Rating</a></li>
+		        </ul>
+	        </li>
+	        
+			<li class="nav-item"><a class="nav-link navbar-brand" ui-sref="createProjectState" id="mynav_startproj">
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			Start a Project</a></li>
+
+		</ul>
+		<ul class="nav navbar-nav navbar-right navbar-header">
+	      <li><a href="#" id="username" class="navbar-brand">{{ic.user.username}}&nbsp;&nbsp;<span class="glyphicon glyphicon-user" id="userglyph"></span>&nbsp;&nbsp;</a> </li>
+	    	<li>&nbsp;&nbsp;</li>
+	    	<li id="mynav"><a href="#" id="logout" class="navbar-brand">Logout</a></li>
+	    	<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+	    </ul>
+	</div>
+</nav>
+
+<div class="container">
+
+<br>
+
+<div align="center">
+	<div style="display: inline-block; width: 65%">
+		<div class="well" style="background-color:#0e1144">
+			<h2 id="pageHeader" >{{ic.pageHeader}}</h2>
+			<!-- <h2  ng-show="ic.investments[0]" id="pageHeader" >My Investments</h2>
+			<h3 ng-hide="ic.investments[0]" style="color:aqua">No Investments, find some startups!</h3> -->
+			<br>
+			<div ng-repeat="item in ic.investments" class="well" style="background-color: #ccf5ff">
+				<div class="row">
+					
+					<table class="table table-striped table-hover">
+					<thead>
+						<tr style="font-weight: bold;text-align:center;">
+							<td>Project</td>					
+							<td>Company Ownership</td>
+							<td>Amount</td>
+							<td>Date</td>
+							
+						</tr>
+					</thead>
+					<tbody>
+						<tr style="text-align:center;">
+							<td>{{item.project.title}}</td>
+							<td>{{item.percent}}%</td>
+							<td>{{item.amount | currency}}</td>
+							<td>{{item.date | date : mediumDate}}</td>
+						</tr>
+					</tbody>
+				</table>
+					
+					<!-- <div class="col-sm-3">Company Ownership: {{item.percent}}%</div>
+					<div class="col-sm-3">Amount:{{item.amount | currency}}</div>
+					<div class="col-sm-3">Date:{{item.date | date : mediumDate}}</div> -->
+				</div>
+				<br>
+				<div class="row"  style="display: inline-block; width: 40%;">
+					<div class="col-sm-12 container">
+						<button ui-sref="indProjectState" type="button"
+							class="btn btn-primary" ng-click="ic.project(item.project.title)">View
+							Project</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</div>

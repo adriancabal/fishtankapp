@@ -1,0 +1,83 @@
+
+
+<nav class="navbar navbar-inverse">
+	<div class="container-fluid">
+		<ul class="nav navbar-nav">
+			<li class="nav-item"><a class="nav-link">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			
+			</a></li>
+		</ul>
+		<div class="navbar-header">	
+	      <a class="navbar-brand" href="#" ui-sref="homeState" id="navlogo"><span id="fish">Fish</span><span id="tank">Tank</span></a>
+	    </div>
+	    <img src="http://freshfish.co.nz/wp/wp-content/uploads/2014/11/favicon.gif" height="35px" width="40px" style="float:left;margin-top: 8px;"/>
+		<ul class="nav navbar-nav">
+			<li class="nav-item"><a class="nav-link">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+			<li class="nav-item"><a class="navbar-brand" ui-sref="viewState" id="mynav">My Info &nbsp;&nbsp;</a></li>
+			<li class="nav-item active"><a class="navbar-brand" ui-sref="projectState" id="mynav">My Projects &nbsp;&nbsp;</a></li>
+			<li class="nav-item"><a class="navbar-brand" ui-sref="investState" id="mynav">My Investments &nbsp;&nbsp;</a></li>
+			<!-- <li class="nav-item"><a class="nav-link" ui-sref="searchState">Search Projects</a></li> -->
+			<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+			<li class="dropdown">
+				<a class="dropdown-toggle navbar-brand" data-toggle="dropdown" href="#" id="mynav">Search Projects
+		        <span class="caret"></span></a>
+		        <ul class="dropdown-menu">
+		          <li><a href="#"  id="dropbar" ng-click="vc.searchType(1)">Technology</a></li>
+		          <li><a href="#"  id="dropbar" ng-click="vc.searchType(2)">Entertainment</a></li>
+		          <li><a href="#"  id="dropbar" ng-click="vc.searchType(3)">Business</a></li> 
+		          <li><a href="#"  id="dropbar" ng-click="vc.searchType(4)">Food</a></li> 
+		          <li><a href="#"  id="dropbar" ng-click="vc.searchType('currentAmount')">Current Investment</a></li> 
+		          <li><a href="#"  id="dropbar" ng-click="vc.searchType('ratio')">Stock Cost</a></li>
+		          <li><a href="#"  id="dropbar" ng-click="vc.searchType('rating')">Rating</a></li>
+		        </ul>
+	        </li>
+	        
+	        
+	        
+			<li class="nav-item"><a class="nav-link navbar-brand" ui-sref="createProjectState" id="mynav_startproj">
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			Start a Project</a></li>
+
+		</ul>
+		<ul class="nav navbar-nav navbar-right navbar-header">
+	      <li><a href="#" id="username" class="navbar-brand">{{vc.user.username}}&nbsp;&nbsp;<span class="glyphicon glyphicon-user" id="userglyph"></span>&nbsp;&nbsp;</a> </li>
+	    	<li>&nbsp;&nbsp;</li>
+	    	<li id="mynav"><a href="#" id="logout" class="navbar-brand">Logout</a></li>
+	    	<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+	    </ul>
+	</div>
+</nav>
+
+<br>
+<br>
+<div class="container well" align="center" style="width:35%;background-color:#0e1144;">
+<h2 id="pageHeader" style="text-align:center">User Info</h2>
+<br>
+<div class="well" style="background-color:#ccf5ff">
+<div ng-show="vc.message">
+<h3>{{vc.message}}</h3>
+<br>
+</div>
+<div>
+Firstname: &nbsp;<input ng-model="vc.user.firstname" value="{{vc.user.firstname}}">
+<br>
+<br>
+Lastname: &nbsp;<input ng-model="vc.user.lastname" value="{{vc.user.lastname}}">
+<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Email: &nbsp;<input ng-model="vc.user.email" value="{{vc.user.email}}">
+<br>
+<br>
+Password: &nbsp;<input type="password" ng-model="vc.user.password" value="{{vc.user.password}}">
+<br>
+<br>
+</div>
+<div class="row"  align="center" style="display: inline-block; width: 50%;">
+	<div class="col-sm-12 container">
+	<button type="button" class="btn btn-primary btn-lg" ng-click="vc.updater()">update</button>
+	</div>
+</div>
+</div>
+</div>
+
+

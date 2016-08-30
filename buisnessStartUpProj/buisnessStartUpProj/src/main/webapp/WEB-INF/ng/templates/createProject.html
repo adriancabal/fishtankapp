@@ -1,0 +1,174 @@
+
+
+
+<!-- OUR NAV BAR IN PROGRESS COPY IT OVER TO ALL STATES AND ADD ON IF NECESSARY -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<nav class="navbar navbar-inverse">
+	<div class="container-fluid">
+		<ul class="nav navbar-nav">
+			<li class="nav-item"><a class="nav-link">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			
+			</a></li>
+		</ul>
+		<div class="navbar-header">	
+	      <a class="navbar-brand" href="#" ui-sref="homeState" id="navlogo"><span id="fish">Fish</span><span id="tank">Tank</span></a>
+	    </div>
+	    
+	    <img src="http://freshfish.co.nz/wp/wp-content/uploads/2014/11/favicon.gif" height="35px" width="40px" style="float:left;margin-top: 8px;"/>
+	    
+		<ul class="nav navbar-nav">
+			<li class="nav-item"><a class="nav-link">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+			<li class="nav-item"><a class="navbar-brand" ui-sref="viewState" id="mynav">My Info &nbsp;&nbsp;</a></li>
+			<li class="nav-item active"><a class="navbar-brand" ui-sref="projectState" id="mynav">My Projects &nbsp;&nbsp;</a></li>
+			<li class="nav-item"><a class="navbar-brand" ui-sref="investState" id="mynav">My Investments &nbsp;&nbsp;</a></li>
+			<!-- <li class="nav-item"><a class="nav-link" ui-sref="searchState">Search Projects</a></li> -->
+			<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+			<li class="dropdown">
+				<a class="dropdown-toggle navbar-brand" data-toggle="dropdown" href="#" id="mynav">Search Projects
+		        <span class="caret"></span></a>
+		        <ul class="dropdown-menu">
+		          <li><a href="#"  id="dropbar" ng-click="cpc.searchType(1)">Technology</a></li>
+		          <li><a href="#"  id="dropbar" ng-click="cpc.searchType(2)">Entertainment</a></li>
+		          <li><a href="#"  id="dropbar" ng-click="cpc.searchType(3)">Business</a></li> 
+		          <li><a href="#"  id="dropbar" ng-click="cpc.searchType(4)">Food</a></li> 
+		          <li><a href="#"  id="dropbar" ng-click="cpc.searchType('currentAmount')">Current Investment</a></li> 
+		          <li><a href="#"  id="dropbar" ng-click="cpc.searchType('ratio')">Stock Cost</a></li>
+		          <li><a href="#"  id="dropbar" ng-click="cpc.searchType('rating')">Rating</a></li>
+		        </ul>
+	        </li>
+	        
+			<li class="nav-item"><a class="nav-link navbar-brand" ui-sref="createProjectState" id="mynav_startproj">
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			Start a Project</a></li>
+
+		</ul>
+		<ul class="nav navbar-nav navbar-right navbar-header">
+	      <li><a href="#" id="username" class="navbar-brand">{{cpc.user.username}}&nbsp;&nbsp;<span class="glyphicon glyphicon-user" id="userglyph"></span>&nbsp;&nbsp;</a> </li>
+	    	<li>&nbsp;&nbsp;</li>
+	    	<li id="mynav"><a href="#" id="logout" class="navbar-brand">Logout</a></li>
+	    	<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+	    </ul>
+	</div>
+</nav>
+
+<div class="container">
+<div>
+<div style="display:inline-block;width:17%;"></div>
+<div class="well" align="center" style="display:inline-block;background-color:#0e1144;">
+
+
+
+	<h2 style="color:#80ff80;">Start a New Project</h2>
+	<div class="well" style="display:inline-block;background-color:#99ebff;">
+	<br>
+	<h4>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		
+		<span ng-show="cpc.categoryRequired">&nbsp;&nbsp;</span>
+		<span id="reqfield" ng-show="cpc.titleRequired">*</span>
+		Project Title: <input type="text" ng-model="cpc.title" />
+		&nbsp;
+		<span id="reqfield" ng-show="cpc.categoryRequired">*</span>
+		Category: <select ng-model="cpc.category" ng-options="x for x in cpc.categories">
+	</select>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		
+		</h4>
+	<h4></h4>
+	
+	<!-- <h4>Category <input type="number" ng-model="cpc.categoryId"> </h4> -->
+	
+	
+	
+	<h4>
+	<span id="reqfield" ng-show="cpc.locationRequired">*</span>
+	Location: <input type="text" ng-model="cpc.location" /> 
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	</h4>
+	
+	<h4>
+	<span id="reqfield" ng-show="cpc.linkRequired">*</span>
+	Link:
+	<input type="text" ng-model="cpc.link" min="0" />
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	
+	<h4>
+	<span id="reqfield" ng-show="cpc.goalRequired">*</span>
+	Goal: <input type="number" ng-model="cpc.goal" min="0"> 
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	</h4>
+	
+	<h4>
+	<span id="reqfield" ng-show="cpc.ratioRequired">*</span>
+	Stock Price: <input type="number" ng-model="cpc.ratio" min="0"> 
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	</h4>
+	
+	<h4>
+	<span id="reqfield" ng-show="cpc.durationRequired">*</span>
+	Duration (days): <input type="number" ng-model="cpc.duration" min="0" max="60"/>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	</h4>
+	
+	
+	
+	<br>
+	
+	<h4>
+	<span id="reqfield" ng-show="cpc.descriptionRequired">*</span>
+	Description:
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	<br><br>
+	<textarea rows="6" cols="40" ng-model="cpc.description"></textarea><!-- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -->
+	</h4>
+	
+	
+	
+	<br>
+	
+	<!-- Upload Image Testing -->
+	
+	<h4>Upload Project Image</h4>
+	<br>
+	<!-- File Drop Zone -->
+	<div id="drop_zone"  ondragover="this.style.backgroundColor ='#1ec1fa';" style="height: 150px;width:400px; cursor: pointer;" onClick='document.getElementById("imageInput").click()'>
+		
+		<!-- <div ng-repeat="imgk in cpc.imageKey">
+			<h3>{{imgk}}</h3>
+		</div> -->
+		<h3 id="filename"></h3> 
+		<h1 id="checkicon" style="display:none;"><span class="glyphicon glyphicon-ok" style="color:green"></span></h1>
+		<h3 id="dropzonetext">Drag & Drop Image<br><br> (or click here to choose file)</h3>
+	</div>
+	<br>
+	<h4>
+		<!-- <input type="file" ng-file-select="onFileSelect($files)" multiple> -->
+		<input type="file" name="pic" accept="image/*" ng-model="cpc.image" id="imageInput" style="display:none">
+	</h4>
+	{{cpc.image}}
+	<!-- <p id="b64"></p> -->
+	<img id="img">
+	
+	<br><br><br><br>
+	<!-- <button type="button" class="btn btn-success btn-lg" ui-sref="projectCreatedState" ng-click="cpc.createProject()">Start Project</button> -->
+	<div id="reqfield" ng-show="cpc.requiredField" align="center"><h4>*Please fill out the required fields</h4></div>
+	<button type="button" class="btn btn-success btn-lg" ng-click="cpc.createProject()">Start Project</button>
+	<br><br><br>
+	</h4>
+	</div>
+</div>
+</div>
+</div>
+<br>
+<br>

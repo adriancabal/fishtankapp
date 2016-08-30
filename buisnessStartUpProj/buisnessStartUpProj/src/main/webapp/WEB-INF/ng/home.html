@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<meta charset="ISO-8859-1">
+
+
+<style type="text/css">
+	#username{color:white;}
+	#navlogo {font-size: xx-large;}
+	#fish {color:#80ff80;background-color:black;}
+	#tank {color:aqua;background-color:black;}
+	#mynav {color:white;}
+	#mynav:hover {color:aqua;}
+	#dropbar:hover {background-color:#1ec1fa;}
+	#mynav_startproj {color:#80ff80;}
+	#mynav_startproj:hover {color:aqua;}
+	#userglyph {color:aqua}
+	#logout {color:white;}
+	#logout:hover {color:aqua;}
+	#pageHeader {color:white}
+	#drop_zone {
+	        background-color: #ffe6ff; 
+	        border: #0066ff 5px dashed;
+	        width: 290px; 
+	        height: 200px;
+	        padding: 8px;
+	        font-size: 18px;
+	    }
+    #drop_zone:hover{
+        background-color: #ccebff;
+    }
+	#dropzonetext {color:#0066ff}
+	#projectTable:hover {background-color:#80dfff}
+	#reqfield {color:red;}
+	#campaign{color:black}
+	#campaign:hover{color:aqua;background-color:black}
+	#campaign:active{color:aqua;background-color:black}
+	#reviews{color:black}
+	#reviews:hover{color:aqua;background-color:black}
+	#reviews:active{color:aqua;background-color:black}
+</style>
+<link rel="icon" href="http://freshfish.co.nz/wp/wp-content/uploads/2014/11/favicon.gif" type="image/gif">
+<title>Fish Tank</title>
+</head>
+
+<body ng-app="FishTank"  background="webstuff/french_angelfish.jpg" style="background-color: #80e5ff;background-repeat: no-repeat; background-attachment: fixed; background-size: 100%;">
+<div id="body" ui-view></div>
+<div id="fishy" class="container">
+
+<div style="width:25%;display:inline-block;"></div>
+<div >
+<div  class="container well" ng-show="lc.loggedin" ng-controller="loginCtrl as lc" align="center" style=" width:40%;background-color:black" >
+
+<div class="row">
+	<div class="col-sm-4" style="width:35%;display:inline-block;"></div><div  class="col-sm-8" align="center" class="well" style="display:inline-block; width:30%;">
+	<h1 ng-hide="!lc.loggedin"><span  id="fish">Fish</span><span id="tank">Tank</span>
+	<img src="http://freshfish.co.nz/wp/wp-content/uploads/2014/11/favicon.gif" height="50px" width="50px"/></h1></div>
+	<!-- <button ng-hide="true" type="button" class="btn btn-default" id="steve" ng-click="lc.logout()">Logout</button> -->  
+</div>
+<br>
+<div class="row" style="display:inline-block; width:90%">
+	<div align="center" ng-show="lc.loggedin" class="well" style="background-color:#ccf5ff">
+		
+		<h3>Login</h3>
+		<br>
+		<h5 ng-bind="lc.error"></h5>
+		<h4>Username:&nbsp;<input type="text" ng-model="lc.username" /></h4>
+		<h4>Password: &nbsp;<input type="password" ng-model="lc.password" /></h4>
+		<br>
+		<button type="button" class="btn btn-primary btn-lg" ng-click="lc.login(lc.username, lc.password)">Login</button>
+
+	</div>
+</div>
+</div>
+</div>
+</div>
+<!-- <div id="body" ui-view></div> -->
+
+
+
+<!-- <script src="angular-file-upload-shim.min.js"></script>  -->
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-route.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.1/angular-ui-router.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.0.1/ui-bootstrap-tpls.min.js"></script>
+<script src="https://rawgit.com/dwmkerr/angular-modal-service/master/dst/angular-modal-service.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="ng/templates/router.js"> </script>
+<script type="text/javascript" src="ng/templates/controller.js"> </script>
+<script type="text/javascript" src="ng/templates/service.js"> </script>
+
+<script type="text/javascript" src="ng/templates/module.js"> </script>
+</body>
+</html>
